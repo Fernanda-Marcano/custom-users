@@ -1,49 +1,57 @@
 from django.db import models
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, PermissionsMixin
 
 class CustomUserManager(BaseUserManager):
-    def create_user(self, username, email, first_name = None, last_name = None, password = None):
+    def _create_user(self, username, email, first_name, last_name, password, is_admin, is_superuser, **extra_fields):
         if not email:
             raise ValueError('El correo electrónico es requerido!')
         user = self.model (
             username = username, 
             email = self.normalize_email(email),
             first_name = first_name, 
-            last_name = last_name
+            last_name = last_name,
+            is_admin = is_admin,
+            is_superuser = is_superuser,
+            **extra_fields
         )
         
         user.set_password(password)
-        user.save()
+        user.save(using=self._db)
         return user
     
-    def create_superuser(self, username, email, first_name, last_name, password):
-        user = self.create_user(
-            email,
-            username, 
-            first_name,
-            last_name
-        )
-        user.is_admin = True
-        user.save()
-        return user
+    def create_user(self, username, email, first_name=None, last_name=None, password=None, **extra_fields):
+        return self._create_user(username, email, first_name, last_name, password, False, False, **extra_fields)
+    
+    def create_superuser(self, username, email, first_name=None, last_name=None, password = None, **extra_fields):
+        return self._create_user(username, email, first_name, last_name, password, True, True, **extra_fields)
 
 
-class CustomUser(AbstractBaseUser):
+class CustomUser(AbstractBaseUser, PermissionsMixin):
     username = models.CharField(verbose_name='Nombre de usuario', max_length=50, help_text='Ingrese el nombre de usuario...', unique=True)
     email = models.EmailField(verbose_name='Correo Electrónico', max_length=50, help_text='Ingrese el correo electrónico...', unique=True)
     first_name = models.CharField(verbose_name='Nombre', max_length=50, help_text='Ingrese su nombre...', blank=True, null=True)
     last_name = models.CharField(verbose_name='Apellido', max_length=50, help_text='Ingrese su apellido...', blank=True, null=True)
     is_active = models.BooleanField(default=True)
-    is_admin = models.BooleanField(default=True)    
+    is_admin = models.BooleanField(default=False)    
     
     objects = CustomUserManager()
-    
-    EMAIL_FIELD = 'email'
+
     USERNAME_FIELD = 'username'
     REQUIRED_FIELDS = ['email', 'first_name', 'last_name']
     
     def __str__(self):
         return self.username
+    
+    def has_perm(self, perm, obj = None):
+        return True
+    
+    def has_module_perms(self, app_label):
+        return True
+    
+    @property
+    def is_staff(self):
+        return self.is_admin
+
 
 
 class ProfileUser(models.Model):
