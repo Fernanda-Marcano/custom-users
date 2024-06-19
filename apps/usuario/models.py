@@ -55,15 +55,15 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 
 
 class ProfileUser(models.Model):
-    dni = models.CharField(verbose_name='Número de identificación', max_length=10, help_text='Ingrese su número de identificación', unique=True)
+    user = models.OneToOneField('CustomUser', on_delete=models.RESTRICT, related_name='profile', verbose_name='Usuario')
+    dni = models.CharField(verbose_name='Número de identificación', max_length=10, help_text='Ingrese su número de identificación', unique=True, blank=True, null=True)
     avatar = models.ImageField(verbose_name='Imagen de Perfil', upload_to='avatars/', blank=True, null=True)
     birthdate = models.DateField(verbose_name='Fecha de Nacimiento', blank=True, null=True)
     address = models.CharField(verbose_name='Dirección', max_length=250, help_text='Ingrese su dirección', blank=True, null=True)
     telephone = models.CharField(verbose_name='Número de teléfono', max_length=20, help_text='Ingrese su número de teléfono', blank=True, null=True)
-    user = models.OneToOneField('CustomUser', on_delete=models.RESTRICT)
     
     def __str__(self):
-        return self.dni
+        return self.user.username if self.user.username else "usuario vacio"
     
     def clean(self):
         if self.dni:
