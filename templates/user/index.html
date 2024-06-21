@@ -12,5 +12,6 @@
         </form>
     {% else %}
         <button><a href="{% url 'login' %}">Sing In</a></button>
+        <a href="{% url 'register' %}">Registrar</a>
     {% endif %}
 {% endblock content %}
