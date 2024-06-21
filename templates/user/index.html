@@ -1,0 +1,16 @@
+{% extends '../layouts/base.html' %}
+
+{% block title %}Home{% endblock title %}
+    
+{% block content %}
+    <h1>HOLA</h1>
+    
+    {% if request.user.is_authenticated %}
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Cerrar sesión</button>
+        </form>
+    {% else %}
+        <button><a href="{% url 'login' %}">Sing In</a></button>
+    {% endif %}
+{% endblock content %}
