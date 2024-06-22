@@ -1,0 +1,72 @@
+.content__form {
+    margin-top: 7rem;
+    display: flex;
+    justify-content: center;
+}
+
+.formulario {
+    background-color: #0aa5;
+    flex-basis: 25rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #0aaa;
+}
+
+.form__img {
+    max-width: 150px;
+    max-height: 150px;
+    margin: auto;
+    margin-top: 10px;
+    border: 2px solid #ccc;
+    background-color: #000c;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.img {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.titulo__form {
+    text-transform: uppercase;
+    font-size: 2rem;
+    text-align: center;
+    letter-spacing: 1px;
+    margin: 0.6rem 0 0.2rem 0;
+}
+
+.form__inputs {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 85%;
+    margin-top: 10px;
+}
+
+.form__inputs input {
+    padding: 7px 0;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #0bb;
+    color: #eee;
+}
+
+.form__inputs input:focus-visible {
+    outline: none;
+    background: linear-gradient(transparent, #0aa);
+}
+
+.boton {
+    background: linear-gradient(#055, #0bb);
+    border: none;
+    color: #eee;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    margin: 5px 0 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 7px  #000a;
+    cursor: pointer;
+}

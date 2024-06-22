@@ -1,0 +1,17 @@
+<ul class="navbar__ul">
+    <li class="navbar__li"><a href="{% url 'home' %}" class="navbar__link">Home</a></li>
+    
+    {% if request.user.is_authenticated %}
+        <li class="navbar__li"><a href="#" class="navbar__link">Usuarios</a></li>
+        <li class="navbar__li"><a href="#" class="navbar__link">Perfil</a></li>
+        <li class="navbar__li">
+            <form action="{% url 'logout' %}" method="post">
+                {% csrf_token %}
+                <button type="submit" class="navbar__link boton-cerrar" >Cerrar Sesión</button>
+            </form>
+        </li>
+    {% else %}
+        <li class="navbar__li"><a href="{% url 'login' %}" class="navbar__link boton-sesion">Iniciar Sesión</a></li>    
+        <li class="navbar__li"><a href="{% url 'register-user' %}" class="navbar__link boton-sesion">Registrarme</a></li>
+    {% endif %}
+</ul>

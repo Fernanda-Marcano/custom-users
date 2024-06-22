@@ -1,7 +1,29 @@
+{% extends '../layouts/base.html' %}
 
+{% block title %}LOGIN{% endblock title %}
 
-<form action="" method="post">
-    {% csrf_token %}
-    {{ form }}
-    <input type="submit" value="iniciar sesión">
-</form>
+{% block content %}
+    <div class="content__form">
+        <form action="" method="post" class="formulario">
+            {% csrf_token %}
+            <div class="form__img"><img src="/static/img/user.webp" alt="" class="img"></div>
+            
+            <h2 class="titulo__form">login</h2>
+            <div class="form__error">
+
+            </div>
+            <div class="form__inputs">
+                <label for="">{{ form.username.label_tag}}</label>
+                {{ form.username }}
+            </div>
+            <div class="form__inputs">
+                <label for="">{{ form.password.label_tag }}</label>
+                {{ form.password }}
+            </div>
+            <div class="form__inputs">
+                <input type="submit" class="boton" value="iniciar sesión">
+            </div>            
+        </form>
+    </div>
+{% endblock content %}
+    

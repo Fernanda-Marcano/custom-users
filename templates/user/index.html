@@ -3,15 +3,27 @@
 {% block title %}Home{% endblock title %}
     
 {% block content %}
-    <h1>HOLA</h1>
-    
-    {% if request.user.is_authenticated %}
-        <form method="post" action="{% url 'logout' %}">
-            {% csrf_token %}
-            <button type="submit">Cerrar sesión</button>
-        </form>
-    {% else %}
-        <button><a href="{% url 'login' %}">Sing In</a></button>
-        <a href="{% url 'register' %}">Registrar</a>
-    {% endif %}
+    <h1>HOLA {{ user.username }}</h1>
+    <div class="contenedor">
+        <div class="contenedor__card">
+            <img src="" alt="" class="card__imagen">
+            <h2 class="card__titulo">Titulo</h2>
+            <p class="card__contenido">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, ipsam. Tempora reprehenderit commodi optio cupiditate ullam quasi, odio modi, ad sunt mollitia dolor ratione! Animi eaque porro omnis error rem?</p>
+        </div>
+        <div class="contenedor__card">
+            <img src="" alt="" class="card__imagen">
+            <h2 class="card__titulo">Titulo</h2>
+            <p class="card__contenido">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, ipsam. Tempora reprehenderit commodi optio cupiditate ullam quasi, odio modi, ad sunt mollitia dolor ratione! Animi eaque porro omnis error rem?</p>
+        </div>
+        <div class="contenedor__card">
+            <img src="" alt="" class="card__imagen">
+            <h2 class="card__titulo">Titulo</h2>
+            <p class="card__contenido">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, ipsam. Tempora reprehenderit commodi optio cupiditate ullam quasi, odio modi, ad sunt mollitia dolor ratione! Animi eaque porro omnis error rem?</p>
+        </div>
+        <div class="contenedor__card">
+            <img src="" alt="" class="card__imagen">
+            <h2 class="card__titulo">Titulo</h2>
+            <p class="card__contenido">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam, ipsam. Tempora reprehenderit commodi optio cupiditate ullam quasi, odio modi, ad sunt mollitia dolor ratione! Animi eaque porro omnis error rem?</p>
+        </div>
+    </div>
 {% endblock content %}
