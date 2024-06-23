@@ -1,0 +1,56 @@
+{% extends '../layouts/base.html' %}
+
+{% block title %}Registro{% endblock title %}  
+
+{% block content %}
+    <div class="content__form">
+        <form action="{% url 'register-user' %}" method="post" class="register">
+            {% csrf_token %}
+            <h2 class="titulo__form regist">Crear Usuario</h2>
+            <div class="register__inputs">
+                <div class="cont__input">
+                    <label for="">{{ form.username.label_tag }}</label>
+                    {{ form.username }}
+                </div>
+                <div class="cont__input">
+                    <label for="">{{ form.email.label_tag }}</label>
+                    {{ form.email }}
+                </div>
+            </div>
+            <div class="register__inputs">
+                <div class="cont__input">
+                    <label for="">{{ form.first_name.label_tag }}</label>
+                    {{ form.first_name }}
+                </div>
+                <div class="cont__input">
+                    <label for="">{{ form.last_name.label_tag }}</label>
+                    {{ form.last_name }}
+                </div>
+            </div>
+            <div class="register__inputs">
+                <div class="cont__input">
+                    <label for="">{{ form.password1.label_tag }}</label>
+                    {{ form.password1 }}
+                </div>                
+                <div class="cont__input">
+                    <label for="">{{ form.password2.label_tag }}</label>
+                    {{ form.password2 }}
+                </div>
+            </div>
+            <div class="register__ul">
+                <details>
+                    <summary>Pautas para una contraseña adecuada</summary>
+                    <ul class="cont__li">
+                        {% for campo in form %}
+                            {{ campo.help_text }}
+                        {% endfor %}
+                    </ul>
+                </details>
+            </div>
+            <div class="cont__input">
+                <input type="submit" value="registrar" class="boton">
+            </div>
+            
+        </form>
+    </div>
+{% endblock content %}

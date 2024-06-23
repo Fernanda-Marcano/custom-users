@@ -1,0 +1,74 @@
+.register {
+    background-color: #0aa5;
+    flex-basis: 45rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #0aaa;
+}
+
+.register__inputs {
+    display: flex;
+    justify-content: space-around;
+}
+
+.cont__input {
+    display: flex;
+    flex-direction: column;
+}
+
+.cont__input input {
+    width: 20rem;
+    padding: 7px 0;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #0bb;
+    color: #eee;
+}
+
+.cont__input input:focus-visible {
+    outline: none;
+    background: linear-gradient(transparent, #0aa);
+}
+
+details {
+    border: 2px solid #0aa;
+    padding: 9px;
+    max-width: 92%;
+    margin: auto;
+    margin-top: 20px;
+    font-size: 1.15rem;
+}
+
+details[open] {
+    border: 2px solid #0aa;
+}
+
+.cont__li {
+    font-size: 0.9rem;
+    margin-top: 5px;
+}
+
+.cont__li li {
+    list-style: none;
+}
+
+.cont__input .boton {
+    margin: auto;
+    margin-top: 15px;
+    margin-bottom: 10px;
+}
+
+.regist {
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 630px) {
+    .register__inputs {
+        flex-wrap: wrap;
+    }
+
+    details {
+        max-width: 19rem;
+    }
+}
