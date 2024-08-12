@@ -40,7 +40,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['email', 'first_name', 'last_name']
     
     def __str__(self):
-        return self.username
+        return self.username, self.first_name, self.last_name
     
     def has_perm(self, perm, obj = None):
         return True

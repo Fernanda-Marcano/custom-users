@@ -1,0 +1,67 @@
+.content__form {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.formulario {
+    background-color: #0aa5;
+    flex-basis: 30rem;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    border: 2px solid #0aaa;
+}
+
+.profile__img {
+    max-width: 150px;
+    max-height: 150px;
+    margin: auto;
+    margin-top: 10px;
+    border: 2px solid #ccc;
+    background-color: #000c;
+    border-radius: 50%;
+    text-align: center;
+}
+
+.img {
+    max-width: 90%;
+    max-height: 90%;
+}
+
+.titulo__profile {
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    text-align: center;
+    letter-spacing: 1px;
+    margin: 0.6rem 0 0.2rem 0;
+}
+
+.profile__inputs {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    width: 85%;
+}
+
+.profile__inputs input {
+    padding: 7px 0;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #0bb;
+    color: #eee;
+}
+
+
+.boton {
+    background: linear-gradient(#055, #0bb);
+    border: none;
+    color: #eee;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    margin: 5px 0 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 7px  #000a;
+    cursor: pointer;
+}

@@ -1,0 +1,43 @@
+{% extends '../layouts/base.html' %}
+
+{% block title %}Lista de Usuarios{% endblock title %}
+
+{% block content %}
+    <div class="content__table">
+        <h2 class="table__titulo">lista de usuarios</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre de Usuario</th>
+                    <th>Correo Electrónico</th>
+                    <th>Nombre</th>
+                    <th>Apellido</th>
+                    <th>Acciones</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for campo in form %}
+                    <tr>
+                        <td>{{ campo.id }}</td>
+                        <td>{{ campo.username }}</td>
+                        <td>{{ campo.email }}</td>
+                        <td>{{ campo.first_name }}</td>
+                        <td>{{ campo.last_name }}</td>
+                        <td colspan="2">
+                            {% load static %}
+                            <a href="#" class="detalle" title="Información (tarea: {{ campo.username }})">
+                                <img src="{% static 'img/eye.svg' %}" alt=""></a>
+                            <a href="#" class="edit" title="Editar (tarea: {{ campo.username }})">
+                                <img src="{% static 'img/pencil-square.svg' %}" alt=""></a>
+                            <a href="{% url 'delete-user' campo.id %}" class="del" title="Eliminar (tarea: {{ campo.username }})" onclick="return confirm('¿Seguro desea eliminar la tarea #({{ campo.username }})?')">
+                                <img src="{% static 'img/trash.svg' %}" alt="">
+                            </a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+{% endblock content %}

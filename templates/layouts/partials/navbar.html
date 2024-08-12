@@ -2,8 +2,8 @@
     <li class="navbar__li"><a href="{% url 'home' %}" class="navbar__link">Home</a></li>
     
     {% if request.user.is_authenticated %}
-        <li class="navbar__li"><a href="#" class="navbar__link">Usuarios</a></li>
-        <li class="navbar__li"><a href="#" class="navbar__link">Perfil</a></li>
+        <li class="navbar__li"><a href="{% url 'list-user' %}" class="navbar__link">Usuarios</a></li>
+        <li class="navbar__li"><a href="{% url 'create-profile' %}" class="navbar__link">Perfil</a></li>
         <li class="navbar__li">
             <form action="{% url 'logout' %}" method="post">
                 {% csrf_token %}

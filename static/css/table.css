@@ -1,0 +1,32 @@
+.content__table {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 30px;
+}
+
+td, th {
+    text-align: center;
+    border-bottom: 1px solid #0aa;
+    font-family: 'Courier New', Courier, monospace;
+}
+
+.table__titulo {
+    text-transform: uppercase;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 2rem;
+}
+
+table {
+    max-width: 900px;
+    margin-top: 30px;
+    box-shadow: 0 0 30px 0 #444a;
+    padding: 30px;
+    border-spacing: 10px;
+    background-color: #0aa3;
+}
+
+th {
+    font-weight: bold;
+    font-size: 1.2em;
+}
