@@ -1,0 +1,25 @@
+{% extends '../layouts/base.html' %}
+{% block title %}Perfil{% endblock title %}
+
+
+{% block content %}
+    <div class="content__form">
+        <form action="" method="post" class="formulario_profile">
+            {% csrf_token %}
+            <div class="profile__img"><img src="/static/img/user.webp" alt="" class="img"></div>
+            
+            <h2 class="titulo__profile">{{ user.first_name }} {{ user.last_name }}</h2>
+            <div class="profile__inputs">
+                <h3>{{ form.dni.label_tag }} <span class="min_info">{{ user.profile.dni }}</span></h3>
+                <h3>{{ form.birthdate.label_tag }} <span class="min_info">{{ user.profile.birthdate }}</span></h3>
+                <h3>{{ form.telephone.label_tag }} <span class="min_info">{{ user.profile.telephone }}</span></h3>
+                <h3>{{ form.address.label_tag }} <span class="min_info">{{ user.profile.address }}</span></h3>
+            </div>
+            <div class="profile__inputs">
+                <input type="submit" class="boton" value="Editar Perfil">
+                <input type="submit" class="boton delete" value="Eliminar Perfil">
+            </div>          
+        </form>
+    </div>
+{% endblock content %}
+    

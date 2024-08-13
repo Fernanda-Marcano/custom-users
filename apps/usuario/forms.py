@@ -12,9 +12,9 @@ class ProfileUserForm(forms.ModelForm):
     class Meta:
         model = ProfileUser
         fields = '__all__'
-        """ widgets = {
-            'birthdate':forms.DateField(format=('%Y-%m-%d'), type='date')
-        } """
+        widgets = {
+            'birthdate':forms.DateInput(format=('%Y-%m-%d'), attrs={'type':'date'})
+        }
         labels = {
             'dni':'DNI',
             'avatar':'Avatar', 

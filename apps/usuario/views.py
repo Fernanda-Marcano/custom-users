@@ -13,7 +13,7 @@ def register_user(request):
         form = CustomUserForm(request.POST or None)
         if form.is_valid():
             form.save()
-            return redirect(to='create-profile')
+            return redirect(to='detail-profile')
     form = CustomUserForm()
     context = {
         'form':form,
@@ -45,14 +45,13 @@ def delete_user(request, id):
     return redirect(to='list-user')
 
 
-def create_profile(request):
-    if request.method == 'POST':
-        form = ProfileUser(request.POST or None)
-        if form.is_valid():
-            form.save()
-    form = ProfileUser()
-    context = {'form':form,}
-    return render(request, 'profile/create.html', context)
+def detail_profile(request, id):
+    id_profile = ProfileUser(id=id)
+    form = ProfileUserForm()
+    context = {
+        'form':form,
+        'id_profile':id_profile}
+    return render(request, 'profile/detail.html', context)
 
 
 def edit_profile(request, id):
@@ -60,7 +59,7 @@ def edit_profile(request, id):
     form = ProfileUserForm(request.POST or None, instance=id_profile)
     if form.is_valid():
         form.save()
-        return redirect(to='create-profile')
+        return redirect(to='detail-profile')
     if request.method != 'POST':
         form = ProfileUserForm(instance=id_profile)
         context = {

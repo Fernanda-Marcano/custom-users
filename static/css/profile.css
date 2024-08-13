@@ -1,10 +1,16 @@
+h3, h4 {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .content__form {
     margin-top: 5rem;
     display: flex;
     justify-content: center;
 }
 
-.formulario {
+.formulario_profile {
     background-color: #0aa5;
     flex-basis: 30rem;
     border-radius: 10px;
@@ -42,13 +48,22 @@
     flex-direction: column;
     margin: auto;
     width: 85%;
+    margin-top: 15px;
+}
+
+.min_info {
+    font-weight: 100;
+    font-size: 18px;
+}
+
+h3 {
+    margin-bottom: 10px;
 }
 
 .profile__inputs input {
     padding: 7px 0;
     background-color: transparent;
     border: none;
-    border-bottom: 2px solid #0bb;
     color: #eee;
 }
 
@@ -64,4 +79,25 @@
     border-radius: 5px;
     box-shadow: 0 0 7px  #000a;
     cursor: pointer;
+}
+
+.boton:hover {
+    background: linear-gradient(#013f3f, rgb(3, 129, 129));
+}
+
+.delete {
+    background: linear-gradient(#550004, #a50311);
+    border: none;
+    color: #eee;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-weight: 600;
+    margin: 5px 0 15px;
+    border-radius: 5px;
+    box-shadow: 0 0 7px  #000a;
+    cursor: pointer;
+}
+
+.delete:hover {
+    background: linear-gradient(#420104, #68030b);
 }
