@@ -57,7 +57,7 @@ class CustomUser(AbstractBaseUser, PermissionsMixin):
 class ProfileUser(models.Model):
     user = models.OneToOneField('CustomUser', on_delete=models.CASCADE, related_name='profile', verbose_name='Usuario')
     dni = models.CharField(verbose_name='Número de identificación', max_length=10, help_text='Ingrese su número de identificación', unique=True, blank=True, null=True)
-    avatar = models.ImageField(verbose_name='Imagen de Perfil', upload_to='avatars/', blank=True, null=True)
+    avatar = models.ImageField(verbose_name='Imagen de Perfil', default='avatars/default.jpg', upload_to='avatars/', max_length=255, blank=True, null=True)
     birthdate = models.DateField(verbose_name='Fecha de Nacimiento', blank=True, null=True)
     address = models.CharField(verbose_name='Dirección', max_length=250, help_text='Ingrese su dirección', blank=True, null=True)
     telephone = models.CharField(verbose_name='Número de teléfono', max_length=20, help_text='Ingrese su número de teléfono', blank=True, null=True)

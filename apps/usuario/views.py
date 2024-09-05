@@ -54,17 +54,20 @@ def detail_profile(request, id):
     return render(request, 'profile/detail.html', context)
 
 
-def edit_profile(request, id):
-    id_profile = ProfileUser.objects.get(id=id)
-    form = ProfileUserForm(request.POST or None, instance=id_profile)
-    if form.is_valid():
-        form.save()
+def edit_profile(request):
+    """ id_profile = ProfileUser.objects.get(id=id) """
+    form_user = CustomUserForm(request.POST or None, instance=request.user)
+    form_profile = ProfileUserForm(request.POST, request.FILES, instance=request.user.profile)
+    if form_profile.is_valid() and form_user.is_valid():
+        form_profile.save()
+        form_user.save()
         return redirect(to='detail-profile')
     if request.method != 'POST':
-        form = ProfileUserForm(instance=id_profile)
+        form_user = CustomUserForm(instance=request.user)
+        form_profile = ProfileUserForm(instance=request.user.profile)
         context = {
-            'form':form,
-            'id_profile':id_profile,
+            'form_profile':form_profile,
+            'form_user':form_user,
         }
         return render(request, 'profile/edit_profile.html', context)
 

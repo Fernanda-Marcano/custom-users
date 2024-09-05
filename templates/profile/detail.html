@@ -6,7 +6,7 @@
     <div class="content__form">
         <form action="" method="post" class="formulario_profile">
             {% csrf_token %}
-            <div class="profile__img"><img src="/static/img/user.webp" alt="" class="img"></div>
+            <div class="profile__img"><img src="{{ form.avatar.url }}" alt="" class="img"></div>
             
             <h2 class="titulo__profile">{{ user.first_name }} {{ user.last_name }}</h2>
             <div class="profile__inputs">
